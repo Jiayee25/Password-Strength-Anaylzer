@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="generator.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+<body>
+
+<div class="card">
+  <div class="top">
+    <h1>Password Generator</h1>
+    <p>Smart. Secure. Memorable. Create your perfect password now</p>
+  </div>
+
+  <div class="main-layout">
+    <div class="left-col">
+      <div class="section">
+        <label class="section-label">Choose a base word or enter sentences</label>
+        <textarea id="base-word" placeholder="Enter a word you love OR write a few sentences (e.g., 'I love to eat pepperoni pizza on Sundays!')" rows="3"></textarea>
+      </div>
+
+      <div class="section">
+        <label class="section-label">Choose symbol</label>
+        <div class="symbol-grid">
+          <button class="sym-btn" data-sym="!">!</button>
+          <button class="sym-btn" data-sym="@">@</button>
+          <button class="sym-btn" data-sym="#">#</button>
+          <button class="sym-btn" data-sym="$">$</button>
+          <button class="sym-btn" data-sym="&">&</button>
+          <button class="sym-btn" data-sym="%">%</button>
+          <button class="sym-btn" data-sym="?">?</button>
+          <button class="sym-btn" data-sym="_">_</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="section number-row">
+        <label class="section-label">Number</label>
+        <div class="toggle-wrap" onclick="toggleNumber()">
+          <div class="toggle-track" id="num-track">
+            <div class="toggle-thumb" id="num-thumb"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="numpad" id="numpad">
+        <div class="num-row-top">
+          <button class="num-btn" data-num="1">1</button>
+          <button class="num-btn" data-num="2">2</button>
+          <button class="num-btn" data-num="3">3</button>
+          <button class="num-btn" data-num="4">4</button>
+          <button class="num-btn" data-num="5">5</button>
+        </div>
+        <div class="num-row-bot">
+          <button class="num-btn" data-num="6">6</button>
+          <button class="num-btn" data-num="7">7</button>
+          <button class="num-btn" data-num="8">8</button>
+          <button class="num-btn" data-num="9">9</button>
+          <button class="num-btn" data-num="0">0</button>
+        </div>
+      </div>
+
+      <button class="btn-generate" onclick="generatePassword()">Generate</button>
+
+      <div class="output-row">
+        <input type="text" id="pw-output" placeholder="Password" readonly/>
+        <button class="btn-copy" onclick="copyPw()">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dpar-section" id="dpar-section" style="display:none;">
+    <div class="dpar-header">
+      <span class="dpar-title">⚡ DPAR Recommendations</span>
+      <span class="dpar-sub">Stronger variants of your password, sorted by Levenshtein Distance</span>
+    </div>
+
+    <div class="rec-card" id="rec-0">
+      <div class="rec-top">
+        <span class="rec-badge low">Low change</span>
+        <span class="rec-ld" id="ld-0"></span>
+      </div>
+      <div class="rec-pw" id="pw-0"></div>
+      <div class="rec-bar-wrap">
+        <div class="rec-bar-track"><div class="rec-bar-fill" id="bar-0"></div></div>
+        <span class="rec-score" id="score-0"></span>
+      </div>
+      <button class="btn-use" onclick="usePw(0)">Use this</button>
+    </div>
+
+    <div class="rec-card" id="rec-1">
+      <div class="rec-top">
+        <span class="rec-badge mid">Medium change</span>
+        <span class="rec-ld" id="ld-1"></span>
+      </div>
+      <div class="rec-pw" id="pw-1"></div>
+      <div class="rec-bar-wrap">
+        <div class="rec-bar-track"><div class="rec-bar-fill" id="bar-1"></div></div>
+        <span class="rec-score" id="score-1"></span>
+      </div>
+      <button class="btn-use" onclick="usePw(1)">Use this</button>
+    </div>
+
+    <div class="rec-card" id="rec-2">
+      <div class="rec-top">
+        <span class="rec-badge high">High change</span>
+        <span class="rec-ld" id="ld-2"></span>
+      </div>
+      <div class="rec-pw" id="pw-2"></div>
+      <div class="rec-bar-wrap">
+        <div class="rec-bar-track"><div class="rec-bar-fill" id="bar-2"></div></div>
+        <span class="rec-score" id="score-2"></span>
+      </div>
+      <button class="btn-use" onclick="usePw(2)">Use this</button>
+    </div>
+  </div>
+
+  <a class="back-link" href="fyp.html">← Back to Home</a>
+</div>
+
+<script src="generator.js"></script>
+</body>
+</html>

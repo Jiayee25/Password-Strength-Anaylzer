@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyzer – Password Strength Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="analyzer.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+<body>
+
+<div class="card">
+  <!-- Header -->
+  <div class="top">
+    <h1>Password Strength Analyzer</h1>
+    <p>Test your password strength securely</p>
+  </div>
+
+  <!-- Input row -->
+  <div class="input-row">
+    <div class="input-wrap">
+      <input type="password" id="pw-input" placeholder="••••••••" oninput="analyze()"/>
+      <button class="toggle-vis" onclick="toggleVis()" title="Show/Hide">
+        <svg id="eye-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Criteria -->
+    <ul class="criteria">
+      <li class="criterion" id="c-len">8+ Characters</li>
+      <li class="criterion" id="c-upper">Uppercase</li>
+      <li class="criterion" id="c-lower">Lowercase</li>
+      <li class="criterion" id="c-num">Number</li>
+      <li class="criterion" id="c-sym">Symbol</li>
+    </ul>
+  </div>
+
+  <!-- Strength bar -->
+  <div class="bar-section">
+    <div class="bar-track">
+      <div class="bar-fill" id="bar-fill"></div>
+    </div>
+    <span class="bar-pct" id="bar-pct">0%</span>
+  </div>
+
+  <!-- Result box -->
+  <div class="result-box" id="result-box">
+    <div class="result-label">Security Analyze</div>
+    <div class="crack-time" id="crack-time">Enter a password above</div>
+    <div class="strength-verdict" id="strength-verdict"></div>
+  </div>
+
+  <!-- Back link -->
+  <a class="back-link" href="fyp.html">← Back to Home</a>
+</div>
+
+<script src="analyzer.js"></script>
+</body>
+</html>
